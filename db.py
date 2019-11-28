@@ -62,7 +62,7 @@ class DB:
             if key_ == 'search':
                 humans = search_params['search'].split(" ")
                 for human in humans:
-                    results = {key : val for key, val in results.items() if human in " ".join(val['actors']).lower() or human in val['director'].lower()}
+                    results = {key : val for key, val in results.items() if human.lower() in " ".join(val['actors']).lower() or human.lower() in val['director'].lower()}
         movies = []
         # print(results)
         for result in results:
