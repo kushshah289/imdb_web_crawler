@@ -62,7 +62,10 @@ class Indexer:
         actors = s.split(" ")
         common = []
         for actor in actors:
-            common.append(self.index[actor])
+            if actor in self.index:
+                common.append(self.index[actor])
+            else:
+                common.append([])
         #print(common)
         res = list(reduce(lambda i, j: i & j, (set(x) for x in common)))
         #print(res)
