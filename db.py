@@ -1,6 +1,6 @@
 import os
 import json
-
+from indexer import Indexer
 
 class DB:
     def __init__(self):
@@ -11,8 +11,9 @@ class DB:
         """
         self.data = None
         self.file_name = 'data.json'
+        self.indexer = Indexer()
         self.read_data()
-
+        
 
     def read_data(self):
         """
@@ -25,6 +26,7 @@ class DB:
                     self.data = json.load(f)
                 except:
                     self.data = None
+            self.indexer.initialize_index()
         else:
             print("file does not exist")
             return None
@@ -59,14 +61,15 @@ class DB:
                 results = {key : val for key, val in results.items() if search_params['director'].lower() in val['director'].lower()}
             if key_ == 'actors':
                 results = {key : val for key, val in results.items() if search_params['actors'].lower() in " ".join(val['actors']).lower()}
+            # if key_ == 'search':
+            #     humans = search_params['search'].split(" ")
+            #     for human in humans:
+            #         results = {key : val for key, val in results.items() if human.lower() in " ".join(val['actors']).lower() or human.lower() in val['director'].lower()}
             if key_ == 'search':
-                humans = search_params['search'].split(" ")
-                for human in humans:
-                    results = {key : val for key, val in results.items() if human.lower() in " ".join(val['actors']).lower() or human.lower() in val['director'].lower()}
+                res = self.indexer.common_movies(search_params['search'].lower())
+                results = {key : val for key, val in results.items() if val['rank'] in res}
         movies = []
-        # print(results)
         for result in results:
-            # print(result)
              movies.append(results[result]['movie_name'])
         return movies
 

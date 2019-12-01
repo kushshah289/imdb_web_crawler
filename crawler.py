@@ -17,7 +17,7 @@ class Crawler:
         This function crawls and parses the webpage and stores the data in the
         self.json_data member variable.
         """
-        print("Getting Data:")
+        print("Crawling the IMDB website...")
         for i in range(1,1000, 50):
             # print(i)
             url = f"https://www.imdb.com/search/title/?groups=top_1000&sort=user_rating,desc&start={i}&ref_=adv_nxt";
