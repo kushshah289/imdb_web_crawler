@@ -18,7 +18,7 @@ pip3 install -r requirements.txt
 ## Usage
 
 ```python
-python3 imdb.py --help;
+python3 imdb.py --help
 #optional arguments:
 #  -h, --help           show this help message and exit
 #  --search SEARCH      search string
@@ -26,11 +26,11 @@ python3 imdb.py --help;
 #  --actor ACTOR        search by actor
 #  --rank RANK          search by rank 
 
-python3 imdb.py --search "Spielberg hanks";
+python3 imdb.py --search "Spielberg hanks"
 # ['Saving Private Ryan', 'Catch Me If You Can', 'Bridge of Spies']
 # returns movies associated with hanks and Spielberg
 
-python3 imdb.py --search "spielberg hanks" --rank "27"; 
+python3 imdb.py --search "spielberg hanks" --rank "27" 
 #['Saving Private Ryan']
 
 ```
