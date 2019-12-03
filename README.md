@@ -30,7 +30,7 @@ python3 imdb.py --search "Spielberg hanks"
 # ['Saving Private Ryan', 'Catch Me If You Can', 'Bridge of Spies']
 # returns movies associated with hanks and Spielberg
 
-python3 imdb.py --search "spielberg hanks" --rank "27" 
+python3 imdb.py --search "spielberg hanks" --rank "27"  # Rank may vary depending on when you run this application
 #['Saving Private Ryan']
 
 ```
